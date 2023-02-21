@@ -21,9 +21,11 @@ doc = BeautifulSoup(result, "html.parser")
 category_grid = doc.find("div", class_=["fx-category-grid"])
 categories = category_grid.contents
 # create the (title, link) tuples for every category for facilitating navigation
+
 category_items = []
-# for cat in categories:
+# get the first child
 sibling = categories[0].next_sibling
+# for each sibling, add its title and link
 while sibling is not None:
     if isinstance(sibling, Tag):
         title = sibling['title']
